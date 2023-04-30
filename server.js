@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3001
 const hbs = exphbs.create({ helpers })
 
 // Session details
-const sess = {
+const sesh = {
     secret: "what is this",
     cookie: {
         maxAge: 1000,
@@ -31,7 +31,7 @@ const sess = {
 }
 
 // Use the created session
-app.use(session(sess))
+app.use(session(sesh))
 
 // Specify template engine (handlebars)
 app.engine('handlebars', hbs.engine)
