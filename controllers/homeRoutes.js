@@ -1,4 +1,4 @@
-// where home screen will be rendered
+// home screen route
 const router = require('express').Router()
 const { User, Blog, Comment } = require('../models')
 const withAuth = require('../utils/auth')
@@ -16,9 +16,9 @@ router.get('/', async (req, res) => {
             ],
         });
 
-        const blogs = blogData.map((blog) => blog.get({ plain: true }));
+        const Blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-        res.render('homepage', { blogs, logged_in: req.session.logged_in, username: req.session.username });
+        res.render('homepage', { Blogs, logged_in: req.session.logged_in, username: req.session.username });
 
     } catch (err) {
         res.status(500).json(err)
@@ -66,12 +66,25 @@ router.get('/blog/:id', async (req, res) => {
         });
 
         const singleBlog = blogData.get({ plain: true });
+        const blogCreator = singleBlog.user.username;
+        const techUser = req.session.username;
+        const userValidate = () => {
+            if (blogCreator === techUser) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
-        res.render('view-blog', { singleBlog, logged_in: req.session.logged_in, username: req.session.username })
+        // console.log('====================================');
+        // console.log(singleBlog);
+        // console.log('====================================');
+
+        res.render('view-blog', { singleBlog, userValidate, logged_in: req.session.logged_in, username: req.session.username })
     } catch (err) {
         res.status(500).json(err)
     }
-}); 
+});
 
 // Get route to render 'create-blog' handlebars
 router.get('/create-blog', withAuth, async (req, res) => {

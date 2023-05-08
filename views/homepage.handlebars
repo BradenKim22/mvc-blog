@@ -1,1 +1,12 @@
-{{!--  --}}
+{{!-- Homepage all Blogs --}}
+<h1 class="dashboard-title fa-2x">Blogs</h1>
+<div class="dashboard-container">
+    {{#each Blogs as |blog|}}
+    <a class="dashboard-blog-box" href="/blog/{{blog.id}}">
+        {{!-- blog_title, blog_content, date_created, user_id --}}
+        <h2>{{blog.blog_title}}</h2>
+        <p>{{user.username}}</p>
+        <p>{{blog.date_created}}</p>
+    </a>
+    {{/each}}
+</div>

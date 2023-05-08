@@ -7,31 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Blog</title>
 
-    <link rel="stylesheet" src="../../public/css/style.css">
-
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <nav>
-        <div>
-            {{!-- Left side of Nav CONSTANT --}}
-        </div>
-        <div>
+    <header class="main-header">
+        <nav class="main-navbar">
+            <div class="left-nav">
+                {{!-- Left side of Nav CONSTANT --}}
+                <a href="/" class="fa fa-home fa-2x"> Tech Blogger</a>
+            </div>
             {{!-- Right side of Nav IF logged in ELSE logged out --}}
             {{#if logged_in}}
-
+            <div class="hello-user">
+                <h1 class="fa fa-lg">Hello {{username}}!</h1>
+                <a href="/create-blog" class="fa fa-plus-circle fa-2x" aria-hidden="true"></a>
+                <a href="/dashboard" class="fa-lg">Dashboard</a>
+                <a id="logout" style="cursor: pointer;" class="fa-lg">Logout</a>
             {{else}}
-
-            {{/if}}
-        </div>
-    </nav>
+            <div class="right-nav">
+                <a href="/signup" class="fa-lg">Signup</a>
+                <a href="/login" class="fa-lg">Login</a>
+                {{/if}}
+            </div>
+        </nav>
+    </header>
+    <div class="color-gradient"></div>
     <main>
         <div>
             {{{ body }}}
         </div>
     </main>
-    {{#if logged_in}}
 
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
     {{/if}}
-    <script src=""></script>
 </body>
+</html>
