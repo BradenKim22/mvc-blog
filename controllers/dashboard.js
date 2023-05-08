@@ -18,12 +18,11 @@ router.get('/', withAuth, async (req, res) => {
                 user_id: req.session.user_id
             }
         })
-        const blogs = blogData.map((review) => review.get({ plain: true }))
-        res.render('profile', { blogs, logged_in: req.session.logged_in, username: req.session.username })
+        const Blogs = blogData.map((blog) => blog.get({ plain: true }))
+        res.render('dashboard', { Blogs, logged_in: req.session.logged_in, username: req.session.username })
     } catch (err) {
         res.status(500).json(err)
     }
 })
-
 
 module.exports = router

@@ -1,1 +1,46 @@
-{{!--  --}}
+<div class="flex-center blog-container">
+    <div class="blog-page">
+        {{!-- view title --}}
+        <h1>{{singleBlog.blog_title}}</h1>
+        {{!-- view content --}}
+        <p>{{singleBlog.blog_content}}</p>
+        {{!-- view Author? --}}
+        <p class="fa">By: {{singleBlog.user.username}}<br>
+        On: {{singleBlog.date_created}}</p>
+
+        
+{{!-- Work on the buttons working and such...================================================== --}}
+        {{#if userValidate }}
+            <div class="edit-delete">
+                {{!-- edit button if you're the creator --}}
+                <button class="edit fa" data-id="{{singleBlog.id}}">Edit</button>
+                {{!-- delete button if you're the creator --}}
+                <button class="delete fa" data-id="{{singleBlog.id}}">Delete</button>
+            </div>
+        {{/if}}
+    </div>
+    <div class="comments-section">
+        {{#if singleBlog.comments}}
+            {{#each singleBlog.comments as |comment|}}
+                <div class="comment-card">
+                    {{!-- view comments --}}
+                    <h2>{{comment.user.username}}</h2>
+                    {{!-- comment button --}}
+                    <p>{{comment.content}}</p>
+                    {{!-- date created --}}
+                    <p>{{comment.date_created}}</p>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3>No Comments . . .</h3>
+        {{/if}}
+        {{#if logged_in}}
+            <div class="add-comment">
+                <textarea id="create-comment" cols="40" rows="5" placeholder="Comment"></textarea>
+                <button class="create-comment-btn">Add Comment</button>
+            </div>
+        {{/if}}
+    </div>
+</div>
+
+<script src="/js/view-blog.js"></script>

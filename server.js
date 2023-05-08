@@ -16,9 +16,9 @@ const hbs = exphbs.create({ helpers })
 
 // Session details
 const sesh = {
-    secret: "what is this",
+    secret: "15 min session",
     cookie: {
-        maxAge: 1000,
+        maxAge: 900000,
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
@@ -47,5 +47,5 @@ app.use(routes)
 
 // Sync sequelize data, then start the server if successful
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening!'))
+    app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 })
