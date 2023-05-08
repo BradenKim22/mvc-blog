@@ -1,9 +1,9 @@
 <div class="flex-center blog-container">
     <div class="blog-page">
         {{!-- view title --}}
-        <h1>{{singleBlog.blog_title}}</h1>
+        <h1 class="blog-title">{{singleBlog.blog_title}}</h1>
         {{!-- view content --}}
-        <p>{{singleBlog.blog_content}}</p>
+        <p class="blog-content">{{singleBlog.blog_content}}</p>
         {{!-- view Author? --}}
         <p class="fa">By: {{singleBlog.user.username}}<br>
         On: {{singleBlog.date_created}}</p>
@@ -12,8 +12,9 @@
 {{!-- Work on the buttons working and such...================================================== --}}
         {{#if userValidate }}
             <div class="edit-delete">
-                {{!-- edit button if you're the creator --}}
-                <button class="edit fa" data-id="{{singleBlog.id}}">Edit</button>
+                {{!-- edit button or save button if you're the creator --}}
+                <button class="edit fa" data-id="{{singleBlog.id}}" style="display:;">Edit</button>
+                <button class="save fa" data-id="{{singleBlog.id}}" style="display: none;">Save</button>
                 {{!-- delete button if you're the creator --}}
                 <button class="delete fa" data-id="{{singleBlog.id}}">Delete</button>
             </div>
