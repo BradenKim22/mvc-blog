@@ -18,18 +18,19 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // Updates the Blog in the DB
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.update(
-        {
-            where: {
-                id: req.params.id
-            }
-        },
-        {
-            blog_title: req.body.blog_title,
-            blog_content: req.body.blog_content
-        }
+            {
+                blog_title: req.body.blog_title,
+                blog_content: req.body.blog_content,
+                user_id: req.session.user_id,
+            },
+            {
+                where: {
+                    id: req.params.id
+                }
+            },
         );
         
         if (!blogData) {
@@ -39,13 +40,13 @@ router.put('/:id', async (req, res) => {
         
         res.status(200).json(blogData);
         
-    } catch {
-        res.status(400).json(err);
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 
 // Deletes the Blog in the DB
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.destroy({
             where: {

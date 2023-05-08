@@ -246,7 +246,7 @@ body {
     font-family: sans-serif;
 }
 
-.edit, .delete {
+.edit, .delete, .save {
     background: var(--tetriary);
     border-radius: 5px;
     border: none;

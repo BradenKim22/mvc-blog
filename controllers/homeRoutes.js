@@ -76,10 +76,6 @@ router.get('/blog/:id', async (req, res) => {
             }
         }
 
-        // console.log('====================================');
-        // console.log(singleBlog);
-        // console.log('====================================');
-
         res.render('view-blog', { singleBlog, userValidate, logged_in: req.session.logged_in, username: req.session.username })
     } catch (err) {
         res.status(500).json(err)
