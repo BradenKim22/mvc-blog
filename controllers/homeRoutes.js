@@ -27,22 +27,32 @@ router.get('/', async (req, res) => {
 
 // Render login screen
 router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/')
-        return
-    }
+    try {
 
-    res.render('login')
-})
+        if (req.session.logged_in) {
+            res.redirect('/')
+            return
+        }
+        
+        res.render('login')
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+)
 
 // Render signup screen
 router.get('/signup', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/')
-        return
+    try {
+        if (req.session.logged_in) {
+            res.redirect('/')
+            return
+        }
+    
+        res.render('signup')
+    } catch (err) {
+        res.status(500).json(err)
     }
-
-    res.render('signup')
 })
 
 // Render one Blog by id
