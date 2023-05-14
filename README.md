@@ -65,7 +65,7 @@ N/A
 
 ## Walkthrough Video
 
-Follow the link for the deployed application <>
+Follow the link for the deployed application https://fathomless-eyrie-09842.herokuapp.com/
 
 ## License
 
