@@ -9,7 +9,7 @@ const helpers = require('./utils/helpers')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 
 const app = express()
-// const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 // Create handlebars w/ custom helpers
 const hbs = exphbs.create({ helpers })
@@ -47,5 +47,5 @@ app.use(routes)
 
 // Sync sequelize data, then start the server if successful
 sequelize.sync({ force: false }).then(() => {
-    app.listen(process.env.PORT || 3000, () => console.log(`Listening on http://localhost:3000`))
+    app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`))
 })
