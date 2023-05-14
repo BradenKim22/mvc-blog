@@ -63,7 +63,7 @@ Anyone especially developers are able to create an account and write blogs. This
 
 N/A
 
-## Walkthrough Video
+## Deployed
 
 Follow the link for the deployed application https://fathomless-eyrie-09842.herokuapp.com/
 
